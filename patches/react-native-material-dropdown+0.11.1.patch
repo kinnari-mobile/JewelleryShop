@@ -1,0 +1,58 @@
+diff --git a/node_modules/react-native-material-dropdown/src/components/dropdown/index.js b/node_modules/react-native-material-dropdown/src/components/dropdown/index.js
+index b1e65a1..b036c87 100644
+--- a/node_modules/react-native-material-dropdown/src/components/dropdown/index.js
++++ b/node_modules/react-native-material-dropdown/src/components/dropdown/index.js
+@@ -133,7 +133,7 @@ export default class Dropdown extends PureComponent {
+     disabledItemColor: PropTypes.string,
+     baseColor: PropTypes.string,
+ 
+-    itemTextStyle: Text.propTypes.style,
++    // itemTextStyle: Text.propTypes.style,
+ 
+     itemCount: PropTypes.number,
+     itemPadding: PropTypes.number,
+@@ -499,8 +499,8 @@ export default class Dropdown extends PureComponent {
+       return renderBase({ ...props, title, value, renderAccessory });
+     }
+ 
+-    title = null == title || 'string' === typeof title?
+-      title:
++    title = null == title || 'string' === typeof title ?
++      title :
+       String(title);
+ 
+     return (
+@@ -605,16 +605,16 @@ export default class Dropdown extends PureComponent {
+     let value = valueExtractor(item, index);
+     let label = labelExtractor(item, index);
+ 
+-    let title = null == label?
+-      value:
++    let title = null == label ?
++      value :
+       label;
+ 
+-    let color = disabled?
+-      disabledItemColor:
+-      ~selected?
+-        index === selected?
+-          selectedItemColor:
+-          itemColor:
++    let color = disabled ?
++      disabledItemColor :
++      ~selected ?
++        index === selected ?
++          selectedItemColor :
++          itemColor :
+         selectedItemColor;
+ 
+     let textStyle = { color, fontSize };
+@@ -682,7 +682,7 @@ export default class Dropdown extends PureComponent {
+     if (null == dropdownPosition) {
+       switch (selected) {
+         case -1:
+-          translateY -= 1 === itemCount? 0 : itemSize;
++          translateY -= 1 === itemCount ? 0 : itemSize;
+           break;
+ 
+         case 0:

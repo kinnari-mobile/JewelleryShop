@@ -1,0 +1,71 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "es2017"
+    ],
+    "jsx": "react-native",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": "./src/",
+    "paths": {
+      "@api": [
+        "api"
+      ],
+      "@images": [
+        "assets/images"
+      ],
+      "@hooks": [
+        "hooks"
+      ],
+      "@icons": [
+        "components/common/Icon"
+      ],
+      "@theme": [
+        "assets/theme"
+      ],
+      "@provider": [
+        "provider"
+      ],
+      "@routes": [
+        "routes"
+      ],
+      "@feature/*": [
+        "feature/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@globals": [
+        "globals"
+      ],
+      "@components": [
+        "components"
+      ],
+      "@common": [
+        "components/common"
+      ],
+      "@store/*": [
+        "store/*"
+      ],
+      "@storage": [
+        "storage"
+      ]
+    },
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}
