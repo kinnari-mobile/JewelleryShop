@@ -40,16 +40,9 @@ function ProductList(props: IProps) {
   const onLongPressButton = () =>{dispatch(toggleDeleteModal(true));}
 
   const addNoOfQR = (text,index) => {
-    console.log("========",text,index);
     onChangeNumber(text);
     dispatch(updateNoOfQRInItem({value : parseInt(text) , selectedIndex : index}));
-
   }
-//   const onChangeHandler = (text,item,index) => {
-//    setNumber(text);
-//    dispatch(updateNoOfQRInItem({value : parseInt(numberText) , selectedIndex : index}));
-//
-// };
 
   const renderItem = ({ item,index }) => {
       return (
