@@ -63,6 +63,7 @@ export const ItemContainer = styled.TouchableHighlight<ITheme>`
   borderWidth: 2px;
   borderColor: ${({theme}) => theme.colors.whiteborder};
 `;
+
 export const ImageContainer = styled.View<ITheme>`
   marginLeft:8px;
   marginTop:20px;

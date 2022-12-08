@@ -28,9 +28,7 @@ import {CheckboxIcon, UncheckboxIcon} from '@icons';
 import {useToggle,useSearchProduct,useUserInfo} from '@hooks';
 import {ISearchBarFields} from '@common';
 import {toggleGlobalLoader} from '@store/slice';
-
-
-
+import { Image } from 'react-native';
 
 
 export function SearchPopUp() {
@@ -93,6 +91,7 @@ const onSearchProduct = () =>{
       <ItemContainer>
           <RowContainer>
             <ImageContainer>
+              <Image style = {{width:'80%',height:'80%'}} source={{uri: item.category.image}}/>
             </ImageContainer>
             <SearchItemMainContainer>
               <ProductTitle>{item.model}</ProductTitle>

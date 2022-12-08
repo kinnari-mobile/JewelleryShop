@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useState, useEffect,useCallback} from 'react';
+import { Image } from 'react-native';
 import {SecondContainer,
+  MyIcon,
   ProductListContainer,
   ProductFlatList,
   ItemContainer,
@@ -48,11 +50,14 @@ function ProductList(props: IProps) {
 // };
 
   const renderItem = ({ item,index }) => {
+    console.log( item.category.image);
+
     return (
       <ItemContainer onLongPress={onLongPressButton} underlayColor="white" >
         <SecondContainer>
           <RowContainer>
             <ImageContainer>
+            <Image style = {{width:'80%',height:'80%'}} source={{uri: item.category.image}}/>
             </ImageContainer>
             <ItemMainContainer>
               <ProductTitle>{item.model}</ProductTitle>
