@@ -11,10 +11,12 @@ const productSlice = createSlice({
     reducers: {
         getProduct: (state, { payload }) => {
             //state = payload.results;
+
             state = payload.results.map(el => ({
               ...el,
-                no_of_qr: ""
+                no_of_qr: 0
             }))
+
             return state;
         },
         deleteProduct: (state, { payload }) => {
@@ -22,9 +24,13 @@ const productSlice = createSlice({
             return state;
         },
         updateNoOfQRInItem: (state, { payload }) => {
-          const { value,selectedIndex } = payload
-          state[selectedIndex].no_of_qr =  value
-          return state;
+          console.log(payload);
+
+            const { value,selectedIndex } = payload
+            if (value != "") {
+              state[selectedIndex].no_of_qr =  value
+            }
+            return state;
         },
     }
 })
@@ -119,7 +125,7 @@ const searchSlice = createSlice({
     initialState:[],
     reducers: {
         searchProductList: (state, { payload }) => {
-        
+
           if (payload.results != null) {
             state = payload.results.map(el => ({
               ...el,

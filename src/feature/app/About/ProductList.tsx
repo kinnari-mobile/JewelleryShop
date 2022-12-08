@@ -27,7 +27,7 @@ import {DeletePopUp} from './DeletePopUp';
 interface IProps {}
 
 function ProductList(props: IProps) {
-  const [numberText, onChangeNumber] = useState(0);
+  const [numberText, onChangeNumber] = useState(1);
   const {user} = useUserInfo();
   const dispatch = useDispatch<AppDispatch>();
   // dispatch our thunk when component first mounts
@@ -39,8 +39,10 @@ function ProductList(props: IProps) {
 
   const onLongPressButton = () =>{dispatch(toggleDeleteModal(true));}
 
-  const addNoOfQR = (item,index) => {
-    dispatch(updateNoOfQRInItem({value : parseInt(numberText) , selectedIndex : index}));
+  const addNoOfQR = (text,index) => {
+    console.log("========",text,index);
+    onChangeNumber(text);
+    dispatch(updateNoOfQRInItem({value : parseInt(text) , selectedIndex : index}));
 
   }
 //   const onChangeHandler = (text,item,index) => {
@@ -50,9 +52,7 @@ function ProductList(props: IProps) {
 // };
 
   const renderItem = ({ item,index }) => {
-    console.log( item.category.image);
-
-    return (
+      return (
       <ItemContainer onLongPress={onLongPressButton} underlayColor="white" >
         <SecondContainer>
           <RowContainer>
@@ -70,8 +70,7 @@ function ProductList(props: IProps) {
           <RowContainer>
             <CategoryTitle>No of QR</CategoryTitle>
             <NumberInput
-            onEndEditing={() => addNoOfQR(item,index)}
-            onChangeText={onChangeNumber}
+            onChangeText={(e) => addNoOfQR(e,index)}
             keyboardType="numeric"/>
           </RowContainer>
           </ItemBottomContainer>
