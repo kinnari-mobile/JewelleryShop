@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 
 export function useToast() {
     const dispatch = useDispatch<AppDispatch>();
-
     const showSuccessToast = (message: string) => {
         dispatch(toastSuccess(message));
     }

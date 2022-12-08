@@ -1,7 +1,7 @@
 import { combineReducers } from "redux"
 import { loaderReducer, userReducer } from "./slice"
 import { toastReducer } from "./slice/toast";
-import { productReducer,deleteModalReducer,searchModalReducer,searchReducer,addSelectedItems } from "./slice/product";
+import { productReducer,deleteModalReducer,searchModalReducer,searchReducer,buttonToggleReducer, } from "./slice/product";
 
 
 const rootReducer = combineReducers({
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
     deletemodel: deleteModalReducer,
     searchmodal: searchModalReducer,
     search: searchReducer,
-    addsearch: addSelectedItems,
+    button: buttonToggleReducer
 })
 
 

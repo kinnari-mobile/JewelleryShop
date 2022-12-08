@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useCallback} from 'react';
 import {SecondContainer,
   ProductListContainer,
   ProductFlatList,
@@ -27,14 +27,11 @@ interface IProps {}
 function ProductList(props: IProps) {
   const [numberText, onChangeNumber] = useState(0);
   const {user} = useUserInfo();
-
-
-
   const dispatch = useDispatch<AppDispatch>();
   // dispatch our thunk when component first mounts
     useEffect(() => {
       dispatch(getProductDetails(user.access));
-    }, [dispatch])
+    }, [])
 
   const productObject = useProducts();
 

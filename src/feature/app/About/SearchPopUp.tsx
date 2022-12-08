@@ -21,12 +21,13 @@ import {SearchContainer,
   BlankMessageTitle,
   BlankMessageContainer
 } from './styles';
-import {toggleSearchModal,searchProduct,updateSelectedProduct,getProduct} from '@store/slice/product';
+import {toggleSearchModal,searchProduct,updateSelectedProduct,getProduct,setButtonTitle,searchProductList} from '@store/slice/product';
 import {AppDispatch} from '@store/store';
 import {useDispatch} from 'react-redux';
 import {CheckboxIcon, UncheckboxIcon} from '@icons';
 import {useToggle,useSearchProduct,useUserInfo} from '@hooks';
 import {ISearchBarFields} from '@common';
+import {toggleGlobalLoader} from '@store/slice';
 
 
 
@@ -37,34 +38,54 @@ export function SearchPopUp() {
   const {user} = useUserInfo();
 
   const [searchText, setSearchText] = useState("");
+  //const [toggleButtonTitle, setToggleButtonTitle] = useState("Search");
+
 
   const {t} = useTheme();
   const searchmodel = useSelector((state: RootState) => state.searchmodal);
   const {visible} = searchmodel;
+
+  const buttonText = useSelector((state: RootState) => state.button);
+  const {title} = buttonText;
+
+
+
   const arraySearch = useSearchProduct();
+
   const onToggleSelectedItems = (item,index ) =>{
      dispatch(updateSelectedProduct({selectedItem : !item.isSelected , selectedIndex : index}));
   }
 
   const onCloseModal = () =>{
-    var results = {};
-    var tempArray = [];
-    for (let index = 0; index < arraySearch.length; index++) {
-      if (arraySearch[index].isSelected) {
-        tempArray.push(arraySearch[index]);
-      }
-    }
-    results = { results :tempArray};
-    dispatch(getProduct(results));
     dispatch(toggleSearchModal(!visible));
   }
+
+
 const onSearchProduct = () =>{
-  if (searchText != null) {
-    dispatch(searchProduct({token:user.access,value:searchText}));
+  if (title == "Add") {
+    if (arraySearch.length != 0) {
+      var resultsValue = {} ;
+      var tempArray = [];
+      for (let index = 0; index < arraySearch.length; index++) {
+        if (arraySearch[index].isSelected) {
+          tempArray.push(arraySearch[index]);
+        }
+      }
+      resultsValue = { results : tempArray};
+      dispatch(getProduct(resultsValue));
+    }
+    var refreshData = [];
+    dispatch(searchProductList(refreshData));
+    dispatch(toggleSearchModal(!visible));
+    dispatch(setButtonTitle("Search"));
+  }else{
+    if (searchText != null) {
+      dispatch(searchProduct({token:user.access,value:searchText}));
+      setSearchText("");
+    }
   }
 }
 
-  //const productObject = useProducts();
 
 
   const renderItem = ({ item,index }) => {
@@ -105,6 +126,7 @@ const onSearchProduct = () =>{
       <SearchContainer>
       <InputContainer
       placeholder="Search Product"
+      placeholderTextColor = {t.colors.lightBlack}
       onChangeText={setSearchText}/>
 
         {
@@ -123,7 +145,7 @@ const onSearchProduct = () =>{
         }
 
             <SearchButton onPress = {onSearchProduct}>
-              <QRTitle>Search</QRTitle>
+              <QRTitle>{title}</QRTitle>
             </SearchButton>
 
       </SearchContainer>

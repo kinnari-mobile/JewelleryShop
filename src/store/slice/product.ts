@@ -75,13 +75,12 @@ export const { toggleSearchModal } = searchModalSlice.actions;
 export const searchModalReducer = searchModalSlice.reducer;
 
 //Api Call for Get Products List
-export const getProductDetails = createAsyncThunk
-(
+export const getProductDetails = createAsyncThunk(
   'user/getProductDetails',
   async (arg, { dispatch,getState, rejectWithValue }) => {
     try {
 
-      console.log("arg==",arg);
+      //console.log("arg==",arg);
 
       dispatch(toggleGlobalLoader(true));
 
@@ -120,10 +119,16 @@ const searchSlice = createSlice({
     initialState:[],
     reducers: {
         searchProductList: (state, { payload }) => {
-                   state = payload.results.map(el => ({
-                     ...el,
-                       isSelected: false
-                   }))
+        
+          if (payload.results != null) {
+            state = payload.results.map(el => ({
+              ...el,
+                isSelected: false
+            }))
+          }else{
+            state = payload;
+          }
+
             return state;
         },
         updateSelectedProduct: (state,  { payload }) => {
@@ -140,30 +145,64 @@ export const searchReducer = searchSlice.reducer;
 
 //Search Modal Component
 export interface IAddSearch {
-    searchArray: [];
+    results: [];
 }
 
 const initialAddState: IAddSearch = {
-    searchArray: []
+    results: []
 }
 
-const addSearchSlice = createSlice({
-    name: 'addsearch',
-    initialState:initialAddState,
-    reducers: {
-        addSelectedItems: (state,  { payload }) => {
-          const { list } = payload
-          console.log(list.length);
-          for (let index = 0; index < list.length; index++) {
-            const element = array[index];
+// const addSearchSlice = createSlice({
+//     name: 'addsearch',
+//     initialState:initialAddState,
+//     reducers: {
+//         addSelectedItems: (state,  { payload }) => {
+//           state = payload;
+//           console.log("state.results==>befor",state.results.length);
+//
+//           var tempArray = [];
+//           for (let index = 0; index < state.results.length; index++) {
+//             if (state.results[index].isSelected) {
+//               tempArray.push(state.results[index]);
+//             }
+//           }
+//           state.results = tempArray;
+//           console.log("state.results==>After",state.results.length);
+//           return state;
+//
+//         },
+//     }
+// })
+// export const { addSelectedItems} = addSearchSlice.actions;
+// export const addSearchReducer = addSearchSlice.reducer;
 
-          }
-          return state;
-        },
+// export const updateAndThenGet = (resultsJson) => async (dispatch) => {
+//   console.log("======");
+//
+//   //await dispatch(addSelectedItems(resultsValue));
+//   return dispatch(getProduct(resultsJson));
+// }
+
+//Toggle Button Component
+export interface IButtonTitle {
+    title: string;
+}
+
+const initialButtonState: IButtonTitle = {
+    title: "Search"
+}
+
+const buttonToggleSlice = createSlice({
+    name: 'button',
+    initialState:initialButtonState,
+    reducers: {
+        setButtonTitle: (state, { payload }) => {
+            state.title = payload;
+        }
     }
 })
-export const { addSelectedItems} = addSearchSlice.actions;
-export const addSearchReducer = addSearchSlice.reducer;
+export const { setButtonTitle } = buttonToggleSlice.actions;
+export const buttonToggleReducer = buttonToggleSlice.reducer;
 //Api Call for Search Products List
 export const searchProduct = createAsyncThunk
 (
@@ -184,6 +223,7 @@ export const searchProduct = createAsyncThunk
         }
         if (status) {
           dispatch(searchProductList(data));
+          dispatch(setButtonTitle("Add"));
         }
         else {
           const message = data?.Error ?? 'Something want wrong!';
