@@ -9,7 +9,6 @@ import FileViewer from "react-native-file-viewer";
 import {getProduct} from '@store/slice/product';
 import {togglePDFModal} from '@store/slice/product';
 
-
 export function PdfGenerate() {
   const qrPages = useProducts();
   const dispatch = useDispatch<AppDispatch>();
@@ -57,8 +56,6 @@ export function PdfGenerate() {
 
 
   const askPermission = () => {
-    //console.log("=============");
-
       async function requestExternalWritePermission() {
         try {
           const granted = await PermissionsAndroid.request(
@@ -114,7 +111,6 @@ export function PdfGenerate() {
      .catch((error) => {
        console.log("Error==>",error);
      });
-
     }
 
   return (

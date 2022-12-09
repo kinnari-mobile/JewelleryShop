@@ -17,7 +17,6 @@ const productSlice = createSlice({
             return state;
         },
         deleteProduct: (state, { payload }) => {
-            console.log("Delete Items.");
             return state;
         },
         updateNoOfQRInItem: (state, { payload }) => {
@@ -99,11 +98,7 @@ export const getProductDetails = createAsyncThunk(
   'user/getProductDetails',
   async (arg, { dispatch,getState, rejectWithValue }) => {
     try {
-
-      //console.log("arg==",arg);
-
       dispatch(toggleGlobalLoader(true));
-
       cancelRequests('getProductDetails');
       get({
         url: routes.products,
@@ -139,7 +134,6 @@ const searchSlice = createSlice({
     initialState:[],
     reducers: {
         searchProductList: (state, { payload }) => {
-
           if (payload.results != null) {
             state = payload.results.map(el => ({
               ...el,
@@ -148,14 +142,11 @@ const searchSlice = createSlice({
           }else{
             state = payload;
           }
-
             return state;
         },
         updateSelectedProduct: (state,  { payload }) => {
           const { selectedItem,selectedIndex } = payload
           state[selectedIndex].isSelected =  selectedItem
-          // const newItem = state[selectedIndex];
-          // state.searchArray = newItem;
           return state;
         }
     }
@@ -171,37 +162,6 @@ export interface IAddSearch {
 const initialAddState: IAddSearch = {
     results: []
 }
-
-// const addSearchSlice = createSlice({
-//     name: 'addsearch',
-//     initialState:initialAddState,
-//     reducers: {
-//         addSelectedItems: (state,  { payload }) => {
-//           state = payload;
-//           console.log("state.results==>befor",state.results.length);
-//
-//           var tempArray = [];
-//           for (let index = 0; index < state.results.length; index++) {
-//             if (state.results[index].isSelected) {
-//               tempArray.push(state.results[index]);
-//             }
-//           }
-//           state.results = tempArray;
-//           console.log("state.results==>After",state.results.length);
-//           return state;
-//
-//         },
-//     }
-// })
-// export const { addSelectedItems} = addSearchSlice.actions;
-// export const addSearchReducer = addSearchSlice.reducer;
-
-// export const updateAndThenGet = (resultsJson) => async (dispatch) => {
-//   console.log("======");
-//
-//   //await dispatch(addSelectedItems(resultsValue));
-//   return dispatch(getProduct(resultsJson));
-// }
 
 //Toggle Button Component
 export interface IButtonTitle {

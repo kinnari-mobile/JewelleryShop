@@ -23,33 +23,26 @@ import {useDispatch,useSelector} from 'react-redux';
 import {useProducts,useUserInfo} from '@hooks';
 import {DeletePopUp} from './DeletePopUp';
 
-
 interface IProps {}
 
 function ProductList(props: IProps) {
   const [numberText, onChangeNumber] = useState(0);
   const {user} = useUserInfo();
   const dispatch = useDispatch<AppDispatch>();
-  // dispatch our thunk when component first mounts
-    useEffect(() => {
-      dispatch(getProductDetails(user.access));
-    }, [dispatch])
-
   const productObject = useProducts();
-
   const onLongPressButton = () =>{dispatch(toggleDeleteModal(true));}
-
   const onRefreshProduct = () =>{
     onChangeNumber(0);
     dispatch(getProductDetails(user.access));
-
   }
-
-
   const addNoOfQR = (text,index) => {
     onChangeNumber(text);
     dispatch(updateNoOfQRInItem({value : parseInt(text) , selectedIndex : index}));
   }
+
+  useEffect(() => {
+      dispatch(getProductDetails(user.access));
+  }, [dispatch])
 
   const renderItem = ({ item,index }) => {
       return (

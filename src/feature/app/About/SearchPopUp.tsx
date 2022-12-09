@@ -34,21 +34,13 @@ import { Image } from 'react-native';
 export function SearchPopUp() {
   const dispatch = useDispatch<AppDispatch>();
   const {user} = useUserInfo();
-
+  const arraySearch = useSearchProduct();
   const [searchText, setSearchText] = useState("");
-  //const [toggleButtonTitle, setToggleButtonTitle] = useState("Search");
-
-
   const {t} = useTheme();
   const searchmodel = useSelector((state: RootState) => state.searchmodal);
   const {visible} = searchmodel;
-
   const buttonText = useSelector((state: RootState) => state.button);
   const {title} = buttonText;
-
-
-
-  const arraySearch = useSearchProduct();
 
   const onToggleSelectedItems = (item,index ) =>{
      dispatch(updateSelectedProduct({selectedItem : !item.isSelected , selectedIndex : index}));
@@ -58,33 +50,30 @@ export function SearchPopUp() {
     dispatch(toggleSearchModal(!visible));
   }
 
-
-const onSearchProduct = () =>{
-  if (title == "Add") {
-    if (arraySearch.length != 0) {
-      var resultsValue = {} ;
-      var tempArray = [];
-      for (let index = 0; index < arraySearch.length; index++) {
-        if (arraySearch[index].isSelected) {
-          tempArray.push(arraySearch[index]);
+  const onSearchProduct = () =>{
+    if (title == "Add") {
+      if (arraySearch.length != 0) {
+        var resultsValue = {} ;
+        var tempArray = [];
+        for (let index = 0; index < arraySearch.length; index++) {
+          if (arraySearch[index].isSelected) {
+            tempArray.push(arraySearch[index]);
+          }
         }
+        resultsValue = { results : tempArray};
+        dispatch(getProduct(resultsValue));
       }
-      resultsValue = { results : tempArray};
-      dispatch(getProduct(resultsValue));
-    }
-    var refreshData = [];
-    dispatch(searchProductList(refreshData));
-    dispatch(toggleSearchModal(!visible));
-    dispatch(setButtonTitle("Search"));
-  }else{
-    if (searchText != null) {
-      setSearchText("");
-      dispatch(searchProduct({token:user.access,value:searchText}));
+      var refreshData = [];
+      dispatch(searchProductList(refreshData));
+      dispatch(toggleSearchModal(!visible));
+      dispatch(setButtonTitle("Search"));
+    }else{
+      if (searchText != null) {
+        setSearchText("");
+        dispatch(searchProduct({token:user.access,value:searchText}));
+      }
     }
   }
-}
-
-
 
   const renderItem = ({ item,index }) => {
     return (
