@@ -78,8 +78,8 @@ const onSearchProduct = () =>{
     dispatch(setButtonTitle("Search"));
   }else{
     if (searchText != null) {
-      dispatch(searchProduct({token:user.access,value:searchText}));
       setSearchText("");
+      dispatch(searchProduct({token:user.access,value:searchText}));
     }
   }
 }
@@ -124,6 +124,7 @@ const onSearchProduct = () =>{
 
       <SearchContainer>
       <InputContainer
+      value={searchText}
       placeholder="Search Product"
       placeholderTextColor = {t.colors.lightBlack}
       onChangeText={setSearchText}/>
