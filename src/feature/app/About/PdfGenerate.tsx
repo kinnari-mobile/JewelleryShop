@@ -1,6 +1,5 @@
-
 import React from 'react'
-import { Image } from 'react-native';
+import { Image,Share, } from 'react-native';
 import { useState, useEffect } from 'react';
 import { TouchableOpacity, PermissionsAndroid } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native'
@@ -9,6 +8,7 @@ import { Alert } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {AppDispatch} from '@store/store';
 import {useProducts} from '@hooks';
+import FileViewer from "react-native-file-viewer";
 
 export function PdfGenerate() {
   const qrPages = useProducts();
@@ -98,7 +98,6 @@ export function PdfGenerate() {
       };
 
       let file = await RNHTMLtoPDF.convert(options)
-      // console.log(file.filePath);
       Alert.alert('Successfully Exported', 'Path:' + file.filePath, [
         { text: 'Cancel', style: 'cancel' },
         { text: 'oK', onPress: () => openFile(file.filePath) }
@@ -107,14 +106,18 @@ export function PdfGenerate() {
     }
 
     const openFile = (filepath) => {
-      const path = filepath;// absolute-path-to-my-local-file.
+      FileViewer.open(filepath) // absolute-path-to-my-local-file.
+     .then(() => {
+      console.log("Successfully");
+     })
+     .catch((error) => {
+       console.log("Error==>",error);
+     });
 
     }
 
   return (
-    <View>
-
-     </View>
+    <View/>
   );
 }
 
