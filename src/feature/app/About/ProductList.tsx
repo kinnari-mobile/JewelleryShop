@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect,useCallback} from 'react';
-import { Image } from 'react-native';
+import { Image,RefreshControl } from 'react-native';
 import {SecondContainer,
   MyIcon,
   ProductListContainer,
@@ -19,7 +19,7 @@ import {SecondContainer,
 import {IGetProductFields} from '@common';
 import {AppDispatch} from '@store/store';
 import {getProductDetails,toggleDeleteModal,updateNoOfQRInItem} from '@store/slice/product';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import {useProducts,useUserInfo} from '@hooks';
 import {DeletePopUp} from './DeletePopUp';
 
@@ -27,17 +27,27 @@ import {DeletePopUp} from './DeletePopUp';
 interface IProps {}
 
 function ProductList(props: IProps) {
-  const [numberText, onChangeNumber] = useState(1);
+  const [numberText, onChangeNumber] = useState(0);
   const {user} = useUserInfo();
   const dispatch = useDispatch<AppDispatch>();
   // dispatch our thunk when component first mounts
     useEffect(() => {
       dispatch(getProductDetails(user.access));
-    }, [])
+    }, [dispatch])
 
   const productObject = useProducts();
 
+  const refresh = useSelector((state: RootState) => state.loader);
+  const {visible} = refresh;
+
   const onLongPressButton = () =>{dispatch(toggleDeleteModal(true));}
+
+  const onRefreshProduct = () =>{
+    onChangeNumber(0);
+    dispatch(getProductDetails(user.access));
+
+  }
+
 
   const addNoOfQR = (text,index) => {
     onChangeNumber(text);
@@ -50,7 +60,7 @@ function ProductList(props: IProps) {
         <SecondContainer>
           <RowContainer>
             <ImageContainer>
-            <Image style = {{width:'80%',height:'80%'}} source={{uri: item.category.image}}/>
+            <Image style = {{width:'80%',height:'80%'}} source={{uri: item.images[0].image}}/>
             </ImageContainer>
             <ItemMainContainer>
               <ProductTitle>{item.model}</ProductTitle>
@@ -86,7 +96,10 @@ function ProductList(props: IProps) {
           data={productObject}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
-          extraData={productObject}/>
+          extraData={productObject}
+          refreshControl={
+            <RefreshControl refreshing={visible} onRefresh={onRefreshProduct} />
+          }/>
   }
 
   </ProductListContainer>;

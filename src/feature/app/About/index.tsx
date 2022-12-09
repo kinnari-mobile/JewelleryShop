@@ -4,8 +4,8 @@ import {PlusIcon} from '@icons';
 import {ProductList} from './ProductList';
 import {SearchPopUp} from './SearchPopUp';
 import {PdfGenerate} from './PdfGenerate';
-import {toggleSearchModal} from '@store/slice/product';
-import {useDispatch} from 'react-redux';
+import {toggleSearchModal,togglePDFModal} from '@store/slice/product';
+import {useDispatch,useSelector} from 'react-redux';
 import {AppDispatch} from '@store/store';
 import { useState, useEffect } from 'react';
 
@@ -13,18 +13,20 @@ import { useState, useEffect } from 'react';
 interface IProps {}
 
 function About(props: IProps) {
-  const [isPdfGenrated, setPdfGenrated] = useState(false);
+  const pdfmodel = useSelector((state: RootState) => state.pdf);
+  const {visible} = pdfmodel;
+
   const dispatch = useDispatch<AppDispatch>();
   const onSearchModal = () =>{dispatch(toggleSearchModal(true));}
 
   const onGeneratePdf = () =>{
-    setPdfGenrated(true);
+    dispatch(togglePDFModal(true));
   }
 
   return <Container>
   <ProductList/>
   <SearchPopUp/>
-  {isPdfGenrated && <PdfGenerate/>}
+  {visible && <PdfGenerate/>}
   <BottomContainer>
     <QRGenerateTouchable onPress={onGeneratePdf}>
       <QRTitle>Generate QR</QRTitle>

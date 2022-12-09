@@ -32,6 +32,27 @@ export const { getProduct,deleteProduct,updateNoOfQRInItem } = productSlice.acti
 export const productReducer = productSlice.reducer;
 
 //Delete Modal Component
+export interface IPDFModal {
+    visible: boolean;
+}
+
+const initialPDFState: IPDFModal = {
+    visible: false
+}
+
+const pdfModalSlice = createSlice({
+    name: 'pdf',
+    initialState:initialPDFState,
+    reducers: {
+        togglePDFModal: (state, { payload }) => {
+            state.visible = payload;
+        }
+    }
+})
+export const { togglePDFModal } = pdfModalSlice.actions;
+export const pdfModalReducer = pdfModalSlice.reducer;
+
+//Delete Modal Component
 export interface IDeleteModal {
     visible: boolean;
 }

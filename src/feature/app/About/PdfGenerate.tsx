@@ -1,14 +1,14 @@
 import React from 'react'
-import { Image,Share, } from 'react-native';
 import { useState, useEffect } from 'react';
-import { TouchableOpacity, PermissionsAndroid } from 'react-native';
-import { StyleSheet, Text, View } from 'react-native'
+import { PermissionsAndroid,View,Image,Alert } from 'react-native';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
-import { Alert } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {AppDispatch} from '@store/store';
 import {useProducts} from '@hooks';
 import FileViewer from "react-native-file-viewer";
+import {getProduct} from '@store/slice/product';
+import {togglePDFModal} from '@store/slice/product';
+
 
 export function PdfGenerate() {
   const qrPages = useProducts();
@@ -98,17 +98,18 @@ export function PdfGenerate() {
       };
 
       let file = await RNHTMLtoPDF.convert(options)
-      Alert.alert('Successfully Exported', 'Path:' + file.filePath, [
-        { text: 'Cancel', style: 'cancel' },
+      Alert.alert('Successfully Created', 'Sucess',[
+        { text: 'Cancel', style: 'cancel' ,onPress: () => dispatch(togglePDFModal(false))},
         { text: 'oK', onPress: () => openFile(file.filePath) }
       ], { cancelable: true });
 
     }
 
     const openFile = (filepath) => {
+      dispatch(togglePDFModal(false));
       FileViewer.open(filepath) // absolute-path-to-my-local-file.
      .then(() => {
-      console.log("Successfully");
+       console.log("Successfully");
      })
      .catch((error) => {
        console.log("Error==>",error);
