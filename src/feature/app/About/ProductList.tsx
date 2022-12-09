@@ -37,9 +37,6 @@ function ProductList(props: IProps) {
 
   const productObject = useProducts();
 
-  const refresh = useSelector((state: RootState) => state.loader);
-  const {visible} = refresh;
-
   const onLongPressButton = () =>{dispatch(toggleDeleteModal(true));}
 
   const onRefreshProduct = () =>{
@@ -98,7 +95,7 @@ function ProductList(props: IProps) {
           keyExtractor={(item) => item.id}
           extraData={productObject}
           refreshControl={
-            <RefreshControl refreshing={visible} onRefresh={onRefreshProduct} />
+            <RefreshControl refreshing={false} onRefresh={onRefreshProduct} />
           }/>
   }
 
