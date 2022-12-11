@@ -80,7 +80,7 @@ export function SearchPopUp() {
       <ItemContainer>
           <RowContainer>
             <ImageContainer>
-              <Image style = {{width:'80%',height:'80%'}} source={{uri: item.images[0].image}}/>
+              <Image style = {{width:'80%',height:'80%'}} source={{uri: item.images[0]&&item.images[0].image}}/>
             </ImageContainer>
             <SearchItemMainContainer>
               <ProductTitle>{item.model}</ProductTitle>

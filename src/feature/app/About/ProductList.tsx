@@ -50,7 +50,7 @@ function ProductList(props: IProps) {
         <SecondContainer>
           <RowContainer>
             <ImageContainer>
-            <Image style = {{width:'80%',height:'80%'}} source={{uri: item.images[0].image}}/>
+            <Image style = {{width:'80%',height:'80%'}} source={{uri: item.images[0]&&item.images[0].image}}/>
             </ImageContainer>
             <ItemMainContainer>
               <ProductTitle>{item.model}</ProductTitle>
