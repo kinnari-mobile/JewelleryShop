@@ -16,10 +16,12 @@ import {getUserFromStorage} from '@storage';
 import {useDispatch} from 'react-redux';
 import {AppDispatch} from '@store/store';
 import {AuthRoutes, AuthStackParamList} from './auth.navigator';
+import {TabRoutes} from './tab.navigator';
 
 export type RootStackParamList = {
   auth: NavigatorScreenParams<AuthStackParamList>;
   about: undefined;
+  tab: undefined;
 };
 
 export type RootNavigationType = NativeStackNavigationProp<RootStackParamList>;
@@ -55,11 +57,11 @@ export function Routes() {
           </RootStack.Group>
         ) : (
           <RootStack.Group>
-            <RootStack.Screen
-              name="QRGeneration"
-              component={About}
-              options={getHeaderOptions}
-            />
+          <RootStack.Screen
+            name="tab"
+            component={TabRoutes}
+            options={{headerShown: false}}
+          />
           </RootStack.Group>
         )}
       </RootStack.Navigator>

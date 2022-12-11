@@ -27,6 +27,8 @@ const lightTheme = {
     whitesmoke: "#f5f5f5",
     whiteborder: '#e1e1e1',
     bottomBorder: "#a6a6a6",
+    grey:'#808080',
+    purpul:'#8A8AFF',
   },
   fonts: {
     regular: 'Poppins-Regular',

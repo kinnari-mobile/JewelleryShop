@@ -43,18 +43,18 @@ export function CheckboxIcon(props: ISVGProps) {
 // export function CustomersIcon(props: ISVGProps) {
 //   return <Customers {...props} name="Customers" />;
 // }
-// export function DashboardIcon(props: ISVGProps) {
-//   return <Dashboard {...props} name="Dashboard" />;
-// }
-// export function OrdersIcon(props: ISVGProps) {
-//   return <Orders {...props} name="Orders" />;
-// }
-// export function ProductsIcon(props: ISVGProps) {
-//   return <Products {...props} name="Products" />;
-// }
-// export function SettingsIcon(props: ISVGProps) {
-//   return <Settings {...props} name="Settings" />;
-// }
+export function DashboardIcon(props: ISVGProps) {
+  return <Dashboard {...props} name="Dashboard" />;
+}
+export function OrdersIcon(props: ISVGProps) {
+  return <Orders {...props} name="Orders" />;
+}
+export function ProductsIcon(props: ISVGProps) {
+  return <Products {...props} name="Products" />;
+}
+export function SettingsIcon(props: ISVGProps) {
+  return <Settings {...props} name="Settings" />;
+}
 export function UncheckboxIcon(props: ISVGProps) {
   return <Uncheckbox {...props} name="UnCheckbox" />;
 }
@@ -70,18 +70,18 @@ export function HidePasswordIcon(props: ISVGProps) {
 // export function FilterIcon(props: ISVGProps) {
 //   return <Filter {...props} name="Filter" />;
 // }
-// export function SortIcon(props: ISVGProps) {
-//   return <Sort {...props} name="Sort" />;
-// }
+export function SortIcon(props: ISVGProps) {
+  return <Sort {...props} name="Sort" />;
+}
 // export function CloseIcon(props: ISVGProps) {
 //   return <Close {...props} name="Close" />;
 // }
 // export function GalleryIcon(props: ISVGProps) {
 //   return <Gallery {...props} name="Gallery" />;
 // }
-// export function DeleteIcon(props: ISVGProps) {
-//   return <Delete {...props} name="Delete" />;
-// }
+export function DeleteIcon(props: ISVGProps) {
+  return <Delete {...props} name="Delete" />;
+}
 // export function MenuIcon(props: ISVGProps) {
 //   return <Menu {...props} name="Menu" />;
 // }
