@@ -15,16 +15,26 @@ DrawVerticalContainer,
 DrawHorizontalContainer,ProductDetailsTitle,LightHorizontalContainer,PriceLabelTitle,PriceNumberTitle,
 DiscountTitle,SaveMessageTitle,
 CartButtonTitle,
-ButtonHorizontalContainer} from './styles';
+ButtonHorizontalContainer,
+PlaceOrderButton,
+ButtonTitle,
+BottomButtonContainer,
+TotalTitle,
+BottomLineContainer} from './styles';
 import {DeleteIcon} from '@icons';
 import {OrdersIcon} from '@icons';
 import {useTheme} from '@theme';
+import {useNavigation} from '@react-navigation/native';
+import {RootNavigationType} from '@routes';
 
 
 interface IProps {}
 
 function CartProducts(props: IProps) {
   const {t} = useTheme();
+  const navigation = useNavigation<RootNavigationType>();
+
+
 
   return <CartContainer>
           <RowContainer>
@@ -88,18 +98,18 @@ function CartProducts(props: IProps) {
 
           <ButtonHorizontalContainer/>
           <RowContainer>
-            <ButtonDivideContainer>
-            <CartButtonTitle>Buy This Now</CartButtonTitle>
-
-            </ButtonDivideContainer>
-            <ButtonDivideContainer>
-            <RowContainer>
-             <CartButtonTitle>Buy This Now</CartButtonTitle>
-             </RowContainer>
-            </ButtonDivideContainer>
+            <BottomButtonContainer>
+            <TotalTitle>Total 1300</TotalTitle>
+            </BottomButtonContainer>
+            <BottomButtonContainer>
+            <PlaceOrderButton onPress={() =>
+              navigation.navigate('placeOrder')
+            }>
+            <ButtonTitle>Place Order</ButtonTitle>
+            </PlaceOrderButton>
+            </BottomButtonContainer>
           </RowContainer>
-
-
+          <BottomLineContainer/>
   </CartContainer>;
 }
 

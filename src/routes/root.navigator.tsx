@@ -11,6 +11,7 @@ import {NavigatorScreenParams} from '@react-navigation/native';
 import {useTheme} from '@theme';
 import {useUserInfo} from '@hooks';
 import {About} from '@feature/app';
+import {PlaceOrder} from '@feature/cart';
 import {setUser} from '@store/slice';
 import {getUserFromStorage} from '@storage';
 import {useDispatch} from 'react-redux';
@@ -22,6 +23,7 @@ export type RootStackParamList = {
   auth: NavigatorScreenParams<AuthStackParamList>;
   about: undefined;
   tab: undefined;
+  placeOrder: undefined;
 };
 
 export type RootNavigationType = NativeStackNavigationProp<RootStackParamList>;
@@ -61,6 +63,11 @@ export function Routes() {
             name="tab"
             component={TabRoutes}
             options={{headerShown: false}}
+          />
+          <RootStack.Screen
+            name="placeOrder"
+            component={PlaceOrder}
+            options={getHeaderOptions({title:"Order Summary"})}
           />
           </RootStack.Group>
         )}
