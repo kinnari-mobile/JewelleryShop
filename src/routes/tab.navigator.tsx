@@ -33,7 +33,7 @@ export function TabRoutes() {
       >
       <Tab.Screen
         name="Dashboard"
-        component={Dashboard}
+        component={About}
         options={{
           headerShown: true,
           tabBarLabel: ({ focused }) => (

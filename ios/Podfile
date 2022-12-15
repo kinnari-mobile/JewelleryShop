@@ -25,6 +25,8 @@ target 'VeraiSales' do
 
   pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
 
+  pod 'RNImageMarker', :path => '../node_modules/react-native-image-marker'
+
   target 'VeraiSalesTests' do
     inherit! :complete
     # Pods for testing
