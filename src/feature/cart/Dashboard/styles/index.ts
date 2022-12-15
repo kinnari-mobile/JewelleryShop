@@ -6,7 +6,10 @@ import {IAddCategoryFields} from '@common';
 //Main Screen Bottom View
 export const Container = styled.View<ITheme>`
 backgroundColor: ${({theme}) => theme.colors.white};
- flex:1;
+alignItems:center;
+justifyContent:center;
+flex:1;
+
 `;
 
 export const QRTitle = styled.Text<ITheme>`

@@ -21,6 +21,10 @@ target 'VeraiSales' do
 
   pod 'RNFileViewer', :path => '../node_modules/react-native-file-viewer'
 
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
+  pod 'RNImageCropPicker', :path => '../node_modules/react-native-image-crop-picker'
+
   target 'VeraiSalesTests' do
     inherit! :complete
     # Pods for testing

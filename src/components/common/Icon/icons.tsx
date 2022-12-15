@@ -64,9 +64,9 @@ export function ShowPasswordIcon(props: ISVGProps) {
 export function HidePasswordIcon(props: ISVGProps) {
   return <HidePassword {...props} name="HidePassword" />;
 }
-// export function CameraIcon(props: ISVGProps) {
-//   return <Camera {...props} name="Camera" />;
-// }
+export function CameraIcon(props: ISVGProps) {
+  return <Camera {...props} name="Camera" />;
+}
 // export function FilterIcon(props: ISVGProps) {
 //   return <Filter {...props} name="Filter" />;
 // }
