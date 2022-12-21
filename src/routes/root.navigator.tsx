@@ -44,34 +44,48 @@ export function Routes() {
 
   return (
     <SafeContainer>
-      <RootStack.Navigator
-        screenOptions={{
-          animation: 'slide_from_right',
-          animationDuration: 300,
-        }}>
-        {!isLoggedIn ? (
-          <RootStack.Group>
-            <RootStack.Screen
-              name="auth"
-              component={AuthRoutes}
-              options={{headerShown: false}}
-            />
-          </RootStack.Group>
-        ) : (
-          <RootStack.Group>
-          <RootStack.Screen
-            name="tab"
-            component={TabRoutes}
-            options={{headerShown: false}}
-          />
-          <RootStack.Screen
-            name="placeOrder"
-            component={PlaceOrder}
-            options={getHeaderOptions({title:"Order Summary"})}
-          />
-          </RootStack.Group>
-        )}
-      </RootStack.Navigator>
+    <RootStack.Navigator
+      screenOptions={{
+        animation: 'slide_from_right',
+        animationDuration: 300,
+      }}>
+      <RootStack.Group>
+           <RootStack.Screen
+             name="tab"
+             component={TabRoutes}
+             options={{headerShown: false}}
+           />
+         </RootStack.Group>
+    </RootStack.Navigator>
     </SafeContainer>
   );
 }
+//
+// <RootStack.Navigator
+//   screenOptions={{
+//     animation: 'slide_from_right',
+//     animationDuration: 300,
+//   }}>
+//   {!isLoggedIn ? (
+//     <RootStack.Group>
+//       <RootStack.Screen
+//         name="auth"
+//         component={AuthRoutes}
+//         options={{headerShown: false}}
+//       />
+//     </RootStack.Group>
+//   ) : (
+//     <RootStack.Group>
+//     <RootStack.Screen
+//       name="tab"
+//       component={TabRoutes}
+//       options={{headerShown: false}}
+//     />
+//     <RootStack.Screen
+//       name="placeOrder"
+//       component={PlaceOrder}
+//       options={getHeaderOptions({title:"Order Summary"})}
+//     />
+//     </RootStack.Group>
+//   )}
+// </RootStack.Navigator>

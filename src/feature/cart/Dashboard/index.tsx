@@ -33,6 +33,17 @@ function Dashboard(props: IProps) {
         fontSize: 44,
         scale: 1,
         quality: 100,
+        shadowStyle: {
+          dx: 10.5,
+          dy: 20.8,
+          radius: 20.9,
+          color: '#0000FF'}
+        ,
+        textBackgroundStyle:  {
+          paddingX: 10,
+          paddingY: 10,
+          color: '#0f0'
+        } ,
 saveFormat: ImageFormat.png
       })
         .then((path) => {
@@ -56,6 +67,8 @@ saveFormat: ImageFormat.png
         mediaType : 'photo',
       })
         .then((image) => {
+          console.log('received image================', image);
+
           setFilePath(image.path);
         })
         .catch((e) => alert(e));

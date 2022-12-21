@@ -1,0 +1,184 @@
+{
+  "id": 1,
+  "labour": {
+    "id": 3,
+    "last_login": null,
+    "is_superuser": false,
+    "name": "Staff 1",
+    "email": "labour1@mail.com",
+    "phone": "98745632100",
+    "address": "150ft. Ring Road",
+    "pincode": "360005",
+    "city": "Rajkot",
+    "state": "Gujarat",
+    "country": "India",
+    "photo": null,
+    "bank_name": "Bank of Surat",
+    "account_holder_name": "Labour 1",
+    "account_no": "9874563210123",
+    "ifsc": "asd0asd0asd",
+    "created": "2022-11-18T14:03:38.130983+05:30",
+    "updated": "2022-11-18T14:03:38.131278+05:30",
+    "is_admin": false,
+    "is_manager": false,
+    "is_staff": false,
+    "is_labour": true,
+    "is_customer": false,
+    "is_active": true,
+    "is_del": false,
+    "registration_id": "",
+    "device_id": null,
+    "type": null,
+    "wishlist": [],
+    "cart": [],
+    "hidden_products": [],
+    "labour_products": [
+      1,
+      2
+    ]
+  },
+  "gst": {
+    "cgst": 1,
+    "sgst": 5
+  },
+  "entries": [
+    {
+      "id": 3,
+      "product": {
+        "id": 1,
+        "category": {
+          "id": 1,
+          "sub_category": [
+            {
+              "id": 1,
+              "name": "bangadi -1"
+            }
+          ],
+          "name": "Bangadi",
+          "image": null
+        },
+        "sub_category": {
+          "id": 1,
+          "name": "bangadi -1"
+        },
+        "main_unit": {
+          "id": 1,
+          "title": "Dozon",
+          "baseQty": 12
+        },
+        "sub_unit": {
+          "id": 1,
+          "title": "Dozon",
+          "baseQty": 12
+        },
+        "stone": {
+          "id": 1,
+          "value": "20"
+        },
+        "platting": {
+          "id": 1,
+          "value": "20"
+        },
+        "size": {
+          "id": 1,
+          "value": "20"
+        },
+        "images": [
+          {
+            "id": 1,
+            "image": "https://api.dev.veraisales.icebit.in/uploads/upload/2_X8CC79x.jpg"
+          }
+        ],
+        "name": "test product1",
+        "model": "1234567",
+        "main_qty": 110,
+        "sub_qty": 50,
+        "is_forOrder": false,
+        "mrp": 150,
+        "sale_rate": 100,
+        "created": "2022-12-12T16:57:55.452857+05:30",
+        "updated": "2022-11-04T10:07:43.828683+05:30",
+        "active": false,
+        "online": false
+      },
+      "quantity": 100,
+      "tax": 3,
+      "price": 30,
+      "amount": 3000,
+      "created": "2022-12-20T15:54:35.649989+05:30",
+      "updated": "2022-12-20T15:54:35.650006+05:30"
+    },
+    {
+      "id": 4,
+      "product": {
+        "id": 2,
+        "category": {
+          "id": 1,
+          "sub_category": [
+            {
+              "id": 1,
+              "name": "bangadi -1"
+            }
+          ],
+          "name": "Bangadi",
+          "image": null
+        },
+        "sub_category": {
+          "id": 1,
+          "name": "bangadi -1"
+        },
+        "main_unit": {
+          "id": 1,
+          "title": "Dozon",
+          "baseQty": 12
+        },
+        "sub_unit": {
+          "id": 1,
+          "title": "Dozon",
+          "baseQty": 12
+        },
+        "stone": {
+          "id": 1,
+          "value": "20"
+        },
+        "platting": {
+          "id": 1,
+          "value": "20"
+        },
+        "size": {
+          "id": 1,
+          "value": "20"
+        },
+        "images": [
+          {
+            "id": 2,
+            "image": "https://api.dev.veraisales.icebit.in/uploads/upload/2.jpg"
+          }
+        ],
+        "name": "test product2",
+        "model": "12345",
+        "main_qty": 100,
+        "sub_qty": 50,
+        "is_forOrder": true,
+        "mrp": 150,
+        "sale_rate": 100,
+        "created": "2022-11-19T17:48:00.274464+05:30",
+        "updated": "2022-11-18T15:32:15.020942+05:30",
+        "active": false,
+        "online": false
+      },
+      "quantity": 1,
+      "tax": 3,
+      "price": 150,
+      "amount": 150,
+      "created": "2022-12-20T15:54:35.651211+05:30",
+      "updated": "2022-12-20T15:54:35.651226+05:30"
+    }
+  ],
+  "invoice_no": "VS/9/2022-23",
+  "transport": "Maruti Courier",
+  "lr_no": "112334",
+  "date": "2022-12-20",
+  "created": "2022-12-20T15:54:35.647290+05:30",
+  "updated": "2022-12-20T15:51:25.341975+05:30"
+}
